@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Apps Raven para Mac: do cartão ao acervo protegido, sem perder um arquivo</title>
+<meta name="description" content="Três apps para Mac de pilotos de drone e fotógrafos: FlightFrame Studio copia o cartão com prova, Acervo Organizer organiza anos de fotos e Photo Backup Guardian confere se o backup está completo. Sem conta, sem nuvem, sem mensalidade.">
+<link rel="canonical" href="https://apps.ravendronevideos.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Raven">
+<meta property="og:title" content="Do cartão ao acervo protegido, sem perder um arquivo">
+<meta property="og:description" content="FlightFrame Studio, Acervo Organizer e Photo Backup Guardian: três apps para Mac de quem voa e fotografa.">
+<meta property="og:url" content="https://apps.ravendronevideos.com.br/">
+<meta property="og:image" content="https://flightframe.ravendronevideos.com.br/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#EEF2F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1A24" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2313283A'/%3E%3Cpath d='M12 40c8-2 14-8 20-18 2 6 6 9 12 10l8-6-2 10c-8 6-20 9-38 4z' fill='%23E0679C'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Análise de tráfego sem cookies (opcional). Ex.: Plausible. Descomente depois de criar a conta:
+<script defer data-domain="apps.ravendronevideos.com.br" src="https://plausible.io/js/script.js"></script>
+-->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Apps Raven para Mac",
+  "itemListElement": [
+    {"@type": "SoftwareApplication", "position": 1, "name": "FlightFrame Studio", "operatingSystem": "macOS 15 ou mais novo", "applicationCategory": "PhotographyApplication", "url": "https://flightframe.ravendronevideos.com.br", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "BRL"}},
+    {"@type": "SoftwareApplication", "position": 2, "name": "Acervo Organizer", "operatingSystem": "macOS 13 ou mais novo", "applicationCategory": "PhotographyApplication", "url": "https://acervoorganizer.ravendronevideos.com.br", "offers": {"@type": "Offer", "price": "89.90", "priceCurrency": "BRL"}},
+    {"@type": "SoftwareApplication", "position": 3, "name": "Photo Backup Guardian", "operatingSystem": "macOS 14 ou mais novo", "applicationCategory": "UtilitiesApplication", "url": "https://photobackupguardian.app"}
+  ]
+}
+</script>
+
+<style>
+:root {
+  --paper: #EEF2F3;
+  --surface: #FFFFFF;
+  --ink: #13283A;
+  --ink-2: #4A5D6C;
+  --line: #C9D3D9;
+  --contour: #D6DEE2;
+  --magenta: #A3245E;
+  --magenta-soft: rgba(163, 36, 94, .09);
+  --on-magenta: #FFFFFF;
+  --verified: #1E7A4C;
+  --sky: #2F6E9A;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --measure: 34rem;
+  color-scheme: light;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0E1A24;
+    --surface: #152431;
+    --ink: #E6EDF1;
+    --ink-2: #9FB0BC;
+    --line: #2A3C4A;
+    --contour: #1B2B38;
+    --magenta: #E0679C;
+    --magenta-soft: rgba(224, 103, 156, .12);
+    --on-magenta: #1A0D14;
+    --verified: #5BC48E;
+    --sky: #6FA8CF;
+    color-scheme: dark;
+  }
+}
+*, *::before, *::after { box-sizing: inherit; }
+html { scroll-padding-top: calc(72px + env(safe-area-inset-top, 0px)); scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--display);
+  font-variation-settings: "wdth" 100;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--magenta); outline-offset: 3px; border-radius: 4px; }
+.wrap { width: min(1120px, 100% - 2.5rem); margin-inline: auto; }
+
+/* Cabeçalho */
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 21; background: var(--paper); }
+.top .wrap { display: flex; align-items: center; gap: 1.5rem; height: 64px; }
+.brand { display: flex; align-items: center; gap: .55rem; text-decoration: none; font-weight: 750; font-variation-settings: "wdth" 118; font-size: 1.15rem; letter-spacing: .01em; }
+.brand svg { width: 30px; height: 30px; }
+.top nav { margin-left: auto; display: flex; gap: 1.4rem; font-size: .95rem; }
+.top nav a { text-decoration: none; color: var(--ink-2); }
+.top nav a:hover { color: var(--ink); }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  min-height: 46px; padding: .7rem 1.25rem; border-radius: 10px;
+  font: inherit; font-weight: 650; font-size: 1rem; text-decoration: none; cursor: pointer;
+  border: 1.5px solid var(--ink); background: transparent; color: var(--ink);
+}
+.btn-primary { background: var(--magenta); border-color: var(--magenta); color: var(--on-magenta); }
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-ghost:hover { background: var(--surface); }
+.top .btn { min-height: 40px; padding: .45rem 1rem; font-size: .92rem; }
+@media (max-width: 760px) { .top nav { display: none; } .top .btn { margin-left: auto; } }
+
+/* Herói */
+.hero { position: relative; overflow: hidden; padding: clamp(3rem, 8vw, 6rem) 0 clamp(3.5rem, 8vw, 6.5rem); }
+.contours { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.contours path { fill: none; stroke: var(--contour); stroke-width: 1.2; }
+.hero .wrap { position: relative; display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+@media (max-width: 900px) { .hero .wrap { grid-template-columns: 1fr; } }
+h1 {
+  margin: 0 0 1.25rem;
+  font-size: clamp(2.35rem, 5.2vw, 4.3rem);
+  line-height: 1.02;
+  font-weight: 760;
+  font-variation-settings: "wdth" 112;
+  letter-spacing: -.015em;
+  text-wrap: balance;
+}
+.lede { margin: 0 0 2rem; max-width: var(--measure); font-size: 1.2rem; color: var(--ink-2); }
+.actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.assurance { margin: 1.5rem 0 0; display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; padding: 0; list-style: none; font-size: .95rem; color: var(--ink-2); }
+.assurance li { display: flex; align-items: center; gap: .45rem; }
+.assurance svg { width: 16px; height: 16px; color: var(--verified); flex: none; }
+
+/* Relatório de verificação */
+.report-stage { position: relative; }
+.ring { position: absolute; width: 118%; aspect-ratio: 1; left: -9%; top: 50%; translate: 0 -50%; border-radius: 50%; border: 2px solid var(--magenta); opacity: .55; }
+.ring::after { content: ""; position: absolute; inset: 9%; border-radius: 50%; border: 1.5px dashed var(--sky); opacity: .7; }
+@media (max-width: 900px) { .ring { width: 100%; left: 0; } }
+.report {
+  position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  padding: 1.25rem 1.25rem 1rem; box-shadow: 0 1px 0 var(--line), 0 24px 48px -28px rgba(19, 40, 58, .35);
+}
+.report-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-bottom: .85rem; border-bottom: 1px solid var(--line); }
+.report-head strong { font-size: 1rem; font-weight: 700; }
+.report-head span { font-size: .85rem; color: var(--ink-2); }
+.rows { list-style: none; margin: 0; padding: .35rem 0; }
+.rows li { display: grid; grid-template-columns: 1fr auto auto; gap: .9rem; align-items: center; padding: .55rem 0; border-bottom: 1px dashed var(--line); font-size: .92rem; }
+.rows li:last-child { border-bottom: 0; }
+.file { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hash { font-family: var(--mono); font-size: .78rem; color: var(--ink-2); }
+.status { display: inline-flex; align-items: center; gap: .35rem; font-size: .82rem; font-weight: 650; color: var(--verified); min-width: 6.6rem; justify-content: flex-end; }
+.status svg { width: 15px; height: 15px; }
+@media (max-width: 480px) { .hash { display: none; } .rows li { grid-template-columns: 1fr auto; } }
+.report-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; padding-top: .85rem; border-top: 1px solid var(--line); font-size: .88rem; }
+.report-foot b { color: var(--verified); }
+
+/* Animação única do relatório */
+.js .rows li { opacity: .25; }
+.js .rows li .status { opacity: 0; }
+.js .rows li.done { opacity: 1; transition: opacity .35s ease; }
+.js .rows li.done .status { opacity: 1; transition: opacity .25s ease .15s; }
+.js .report-foot { opacity: 0; }
+.js .report-foot.done { opacity: 1; transition: opacity .4s ease; }
+@media (prefers-reduced-motion: reduce) {
+  .js .rows li, .js .rows li .status, .js .report-foot { opacity: 1 !important; transition: none !important; }
+}
+
+/* Seções */
+section { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+.band { background: var(--surface); border-block: 1px solid var(--line); }
+h2 {
+  margin: 0 0 1rem; font-size: clamp(1.8rem, 3.4vw, 2.6rem); line-height: 1.08;
+  font-weight: 740; font-variation-settings: "wdth" 108; letter-spacing: -.01em; text-wrap: balance;
+}
+.intro { max-width: var(--measure); color: var(--ink-2); margin: 0 0 2.5rem; font-size: 1.1rem; }
+
+/* Dores */
+.pains { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+@media (max-width: 900px) { .pains { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .pains { grid-template-columns: 1fr; } }
+.pains li { padding: 1.4rem 1.5rem 1.4rem 0; border-bottom: 1px solid var(--line); }
+.pains strong { display: block; font-size: 1.08rem; margin-bottom: .3rem; }
+.pains p { margin: 0; color: var(--ink-2); font-size: .98rem; }
+
+/* Jornada dos apps */
+.journey { display: grid; gap: 1.25rem; counter-reset: etapa; }
+.app {
+  display: grid; grid-template-columns: 7.5rem 1fr 15rem; gap: 2rem; align-items: start;
+  padding: 2rem 0; border-top: 1px solid var(--line);
+}
+.app:last-child { border-bottom: 1px solid var(--line); }
+@media (max-width: 860px) { .app { grid-template-columns: 4.5rem 1fr; } .app .buy { grid-column: 1 / -1; } }
+.moment { font-size: .9rem; color: var(--ink-2); }
+.moment b { display: block; font-size: 2.6rem; line-height: 1; font-weight: 780; font-variation-settings: "wdth" 120; color: var(--magenta); margin-bottom: .35rem; }
+.app-name { display: flex; align-items: center; gap: .85rem; margin-bottom: .6rem; }
+.app-name img { width: 52px; height: 52px; border-radius: 12px; }
+.app h3 { margin: 0; font-size: 1.45rem; font-weight: 720; font-variation-settings: "wdth" 104; line-height: 1.15; }
+.question { margin: 0 0 1rem; font-size: 1.15rem; font-style: italic; color: var(--ink); max-width: var(--measure); }
+.app ul { margin: 0; padding-left: 1.1rem; color: var(--ink-2); max-width: var(--measure); }
+.app li { margin: .3rem 0; }
+.buy { display: grid; gap: .6rem; }
+.price { font-size: 1.05rem; font-weight: 700; }
+.price small { display: block; font-weight: 400; color: var(--ink-2); font-size: .88rem; margin-top: .15rem; }
+.buy .btn { width: 100%; }
+.more { font-size: .92rem; color: var(--ink-2); }
+.badge { display: inline-block; font-size: .78rem; font-weight: 650; padding: .15rem .55rem; border-radius: 999px; background: var(--magenta-soft); color: var(--magenta); margin-left: .35rem; vertical-align: middle; }
+
+/* Escolha */
+.chooser { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
+@media (max-width: 860px) { .chooser { grid-template-columns: 1fr; } }
+.options { display: grid; gap: .7rem; }
+.option {
+  text-align: left; font: inherit; font-size: 1.02rem; color: var(--ink); cursor: pointer;
+  padding: 1rem 1.15rem; border-radius: 12px; border: 1.5px solid var(--line); background: var(--paper);
+}
+.option:hover { border-color: var(--ink-2); }
+.option[aria-pressed="true"] { border-color: var(--magenta); background: var(--magenta-soft); font-weight: 600; }
+.answer { padding: 1.5rem; border-radius: 14px; border: 1px solid var(--line); background: var(--paper); min-height: 14rem; }
+.answer h3 { margin: 0 0 .5rem; font-size: 1.35rem; font-weight: 720; }
+.answer p { margin: 0 0 1.25rem; color: var(--ink-2); }
+.answer[data-changed] { animation: settle .3s ease; }
+@keyframes settle { from { opacity: .4; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .answer[data-changed] { animation: none; } }
+
+/* Comparação */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+table { width: 100%; border-collapse: collapse; min-width: 34rem; font-size: .98rem; }
+th, td { padding: .85rem 1.1rem; text-align: left; border-bottom: 1px solid var(--line); }
+thead th { font-weight: 700; background: var(--paper); }
+tbody tr:last-child td, tbody tr:last-child th { border-bottom: 0; }
+tbody th { font-weight: 500; }
+.no { color: var(--ink-2); }
+.yes { color: var(--verified); font-weight: 650; }
+
+/* Fundador */
+.founder { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+@media (max-width: 860px) { .founder { grid-template-columns: 1fr; } }
+blockquote { margin: 0; font-size: clamp(1.35rem, 2.4vw, 1.8rem); line-height: 1.3; font-weight: 560; font-variation-settings: "wdth" 96; text-wrap: pretty; }
+.who { margin-top: 1.25rem; color: var(--ink-2); font-size: .98rem; }
+.rules { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.rules li { padding-left: 1.75rem; position: relative; }
+.rules li::before { content: ""; position: absolute; left: 0; top: .45rem; width: .8rem; height: .8rem; border-radius: 50%; border: 2px solid var(--verified); }
+.rules strong { display: block; }
+.rules span { color: var(--ink-2); font-size: .97rem; }
+
+/* FAQ */
+.faq { max-width: 46rem; }
+details { border-top: 1px solid var(--line); }
+details:last-of-type { border-bottom: 1px solid var(--line); }
+summary { cursor: pointer; list-style: none; padding: 1.15rem 2rem 1.15rem 0; font-weight: 650; font-size: 1.06rem; position: relative; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; position: absolute; right: .25rem; top: 1rem; font-size: 1.4rem; font-weight: 400; color: var(--magenta); }
+details[open] summary::after { content: "–"; }
+details p { margin: 0 0 1.2rem; color: var(--ink-2); max-width: var(--measure); }
+
+/* Lista */
+.signup { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2.5rem; align-items: center; }
+@media (max-width: 860px) { .signup { grid-template-columns: 1fr; } }
+form { display: grid; gap: .75rem; }
+label { font-weight: 600; font-size: .95rem; }
+input[type="email"] {
+  font: inherit; padding: .8rem 1rem; border-radius: 10px; border: 1.5px solid var(--line);
+  background: var(--paper); color: var(--ink); min-height: 48px;
+}
+input[type="email"]:focus-visible { border-color: var(--magenta); outline-offset: 1px; }
+.fine { font-size: .88rem; color: var(--ink-2); margin: 0; }
+.form-msg { font-size: .95rem; font-weight: 600; color: var(--verified); min-height: 1.4em; margin: 0; }
+
+/* Rodapé */
+footer { padding: 2.5rem 0 3rem; border-top: 1px solid var(--line); font-size: .92rem; color: var(--ink-2); }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: space-between; }
+footer nav { display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; }
+footer a { text-decoration: none; }
+footer a:hover { color: var(--ink); text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Raven, início">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="currentColor"/><path d="M12 40c8-2 14-8 20-18 2 6 6 9 12 10l8-6-2 10c-8 6-20 9-38 4z" fill="var(--magenta)"/></svg>
+      Raven
+    </a>
+    <nav aria-label="Seções">
+      <a href="#apps">Os apps</a>
+      <a href="#escolha">Por onde começar</a>
+      <a href="#duvidas">Dúvidas</a>
+    </nav>
+    <a class="btn btn-primary" href="https://apps.apple.com/app/flightframe-studio/id6822035026">Baixar grátis</a>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <section class="hero" aria-labelledby="titulo">
+    <svg class="contours" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path d="M-40 520C120 470 220 560 380 520S640 400 820 430 1060 520 1260 470"/>
+      <path d="M-40 470C140 420 240 500 400 460S650 350 830 380 1070 470 1260 420"/>
+      <path d="M-40 420C160 370 260 440 420 400S660 300 840 330 1080 420 1260 370"/>
+      <path d="M-40 160C100 200 240 120 380 150S620 250 780 210 1040 110 1260 150"/>
+      <path d="M-40 110C110 150 250 70 390 100S630 200 790 160 1050 60 1260 100"/>
+      <path d="M-40 60C120 100 260 20 400 50S640 150 800 110 1060 10 1260 50"/>
+    </svg>
+    <div class="wrap">
+      <div>
+        <h1 id="titulo">Do cartão ao acervo protegido, sem perder um arquivo.</h1>
+        <p class="lede">Três apps para Mac de quem voa e fotografa. Um copia o cartão e prova que cada arquivo chegou inteiro, outro organiza anos de fotos sem apagar nada, e o terceiro confere se o seu backup está mesmo completo.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://apps.apple.com/app/flightframe-studio/id6822035026">Baixar o FlightFrame grátis</a>
+          <a class="btn btn-ghost" href="#apps">Conhecer os três apps</a>
+        </div>
+        <ul class="assurance">
+          <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sem conta</li>
+          <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Suas fotos não saem do Mac</li>
+          <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Pagamento único, sem mensalidade</li>
+        </ul>
+      </div>
+
+      <div class="report-stage">
+        <div class="ring" aria-hidden="true"></div>
+        <figure class="report" aria-label="Exemplo de relatório de verificação do FlightFrame Studio">
+          <div class="report-head">
+            <strong>Casa Barra, voo das 15h02</strong>
+            <span>conferência SHA-256</span>
+          </div>
+          <ol class="rows">
+            <li><span class="file">DJI_0412.DNG</span><span class="hash">9f2c41e0…b7d4c3e8</span><span class="status"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4.8 8.3l2.2 2.2 4.2-4.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Verificado</span></li>
+            <li><span class="file">DJI_0412.JPG</span><span class="hash">47be03d9…93e1f6b2</span><span class="status"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4.8 8.3l2.2 2.2 4.2-4.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Verificado</span></li>
+            <li><span class="file">DJI_0413.MP4</span><span class="hash">c80d2f6a…21b6d4a9</span><span class="status"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4.8 8.3l2.2 2.2 4.2-4.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Verificado</span></li>
+            <li><span class="file">DJI_0413.SRT</span><span class="hash">1e7a9c3f…a7f9b3d5</span><span class="status"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4.8 8.3l2.2 2.2 4.2-4.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Verificado</span></li>
+            <li><span class="file">IMG_2087.CR3</span><span class="hash">b5f3e1a8…c8d7f2e0</span><span class="status"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4.8 8.3l2.2 2.2 4.2-4.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Verificado</span></li>
+          </ol>
+          <figcaption class="report-foot">
+            <span><b>128 de 128</b> arquivos conferidos com o original</span>
+            <span>Backup no segundo disco: conferido</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="dores">
+    <div class="wrap">
+      <h2 id="dores">Você reconhece o fim deste dia?</h2>
+      <p class="intro">O trabalho foi bom. O problema começa quando o cartão chega ao Mac.</p>
+      <ul class="pains">
+        <li><strong>A cópia que parecia completa</strong><p>O Finder não confere se o arquivo chegou inteiro. Um setor ruim no cartão aparece só na edição.</p></li>
+        <li><strong>A pasta “BACKUP FINAL 2”</strong><p>A mesma foto em três HDs e ninguém sabe qual cópia pode ir embora.</p></li>
+        <li><strong>O HD esquecido na gaveta</strong><p>O backup existe, mas não é conectado há um ano. Ele ainda abre?</p></li>
+        <li><strong>A hora errada do drone</strong><p>Fotos e vídeos fora de ordem no Lightroom, e o .SRT longe do vídeo certo.</p></li>
+        <li><strong>A autorização do voo</strong><p>Desde julho de 2026 todo drone precisa de SARPAS. Você consegue provar que voou dentro dela?</p></li>
+        <li><strong>O cartão formatado cedo demais</strong><p>Sem uma segunda cópia conferida, um disco que falha leva o trabalho junto.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="apps" aria-labelledby="tres-apps">
+    <div class="wrap">
+      <h2 id="tres-apps">Um app para cada momento da vida do arquivo</h2>
+      <p class="intro">Eles funcionam sozinhos e se completam. Comece pelo que dói mais hoje.</p>
+
+      <div class="journey">
+        <article class="app" aria-labelledby="ff">
+          <p class="moment"><b>1</b>Hoje, do cartão ao projeto</p>
+          <div>
+            <div class="app-name">
+              <img src="https://flightframe.ravendronevideos.com.br/assets/icon.png" alt="" width="52" height="52" loading="lazy">
+              <h3 id="ff">FlightFrame Studio</h3>
+            </div>
+            <p class="question">“Tudo o que eu gravei chegou inteiro e organizado?”</p>
+            <ul>
+              <li>Cada arquivo relido e comparado com o original por SHA-256, com relatório.</li>
+              <li>Backup conferido em segundo disco ou NAS na mesma importação.</li>
+              <li>Voos e sets separados sozinhos, hora do drone corrigida, .SRT junto do vídeo.</li>
+              <li>Abre no Lightroom Classic com coleções por voo, mapa, relatório em PDF e conferência SARPAS e FAA.</li>
+            </ul>
+          </div>
+          <div class="buy">
+            <p class="price">Grátis para sempre<small>Pro por R$ 99,90 uma vez, preço de lançamento. Teste do Pro por 14 dias. macOS 15 ou mais novo.</small></p>
+            <a class="btn btn-primary" href="https://apps.apple.com/app/flightframe-studio/id6822035026">Baixar grátis</a>
+            <a class="more" href="https://flightframe.ravendronevideos.com.br">Ver todos os recursos</a>
+          </div>
+        </article>
+
+        <article class="app" aria-labelledby="ao">
+          <p class="moment"><b>2</b>Anos de arquivos já gravados</p>
+          <div>
+            <div class="app-name">
+              <img src="https://acervoorganizer.ravendronevideos.com.br/assets/icone-256.png" alt="" width="52" height="52" loading="lazy">
+              <h3 id="ao">Acervo Organizer</h3>
+            </div>
+            <p class="question">“O que eu tenho, onde está e o que é repetido?”</p>
+            <ul>
+              <li>Mostra o destino de cada arquivo antes de mover. Nada é sobrescrito nem apagado.</li>
+              <li>Duplicatas encontradas pelo conteúdo, não pelo nome.</li>
+              <li>RAW e JPG juntos, XMP com a foto, telemetria e proxies com o vídeo.</li>
+              <li>Funciona no Mac, em discos externos e no NAS. Desfaz tudo com um clique.</li>
+            </ul>
+          </div>
+          <div class="buy">
+            <p class="price">R$ 89,90 uma vez<small>14 dias com tudo liberado. Análise, duplicatas e relatórios seguem grátis. macOS 13 ou mais novo.</small></p>
+            <a class="btn btn-primary" href="https://apps.apple.com/app/id6821982992?mt=12">Experimentar grátis</a>
+            <a class="more" href="https://acervoorganizer.ravendronevideos.com.br">Ver todos os recursos</a>
+          </div>
+        </article>
+
+        <article class="app" aria-labelledby="pbg">
+          <p class="moment"><b>3</b>Sempre, depois de tudo</p>
+          <div>
+            <div class="app-name">
+              <img src="https://photobackupguardian.app/icon.png" alt="" width="52" height="52" loading="lazy">
+              <h3 id="pbg">Photo Backup Guardian <span class="badge">em beta</span></h3>
+            </div>
+            <p class="question">“Meu acervo está realmente protegido hoje?”</p>
+            <ul>
+              <li>Confere se cada foto e vídeo tem as cópias que você exige, em HDs, NAS e nuvem.</li>
+              <li>Um arquivo só fica “Protegido” quando a cópia é comprovada pelo conteúdo.</li>
+              <li>“Posso apagar este disco?” só diz sim quando nada depende dele.</li>
+              <li>Só lê. Nunca altera, move ou apaga seus arquivos.</li>
+            </ul>
+          </div>
+          <div class="buy">
+            <p class="price">Lançamento em breve<small>Entre na lista e seja avisado primeiro. macOS 14 ou mais novo.</small></p>
+            <a class="btn btn-primary" href="#lista">Quero ser avisado</a>
+            <a class="more" href="https://photobackupguardian.app">Conhecer o Guardian</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="escolha" class="band" aria-labelledby="comecar">
+    <div class="wrap chooser">
+      <div>
+        <h2 id="comecar">Por onde começar?</h2>
+        <p class="intro">Escolha a frase que mais parece com a sua semana.</p>
+        <div class="options" role="group" aria-label="Sua situação">
+          <button class="option" type="button" aria-pressed="true" data-pick="ff">Acabei de voar e o cartão está cheio.</button>
+          <button class="option" type="button" aria-pressed="false" data-pick="ao">Tenho anos de fotos espalhadas em HDs e no NAS.</button>
+          <button class="option" type="button" aria-pressed="false" data-pick="pbg">Quero ter certeza de que meu backup está completo.</button>
+        </div>
+      </div>
+      <div class="answer" id="resposta" aria-live="polite">
+        <h3>Comece pelo FlightFrame Studio</h3>
+        <p>É grátis e resolve o próximo cartão: cópia conferida, voos separados e o projeto pronto para editar. Depois, se quiser, o Pro faz o backup no segundo disco e abre tudo no Lightroom.</p>
+        <a class="btn btn-primary" href="https://apps.apple.com/app/flightframe-studio/id6822035026">Baixar o FlightFrame grátis</a>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="finder">
+    <div class="wrap">
+      <h2 id="finder">Copiar não é o mesmo que conferir</h2>
+      <p class="intro">Arrastar a pasta no Finder e torcer não é backup. A diferença está no que acontece depois da cópia.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Na hora de descarregar o cartão</th><th scope="col">Finder</th><th scope="col">Apps Raven</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Confere cada arquivo com o original</th><td class="no">Não</td><td class="yes">Sim, por SHA-256</td></tr>
+            <tr><th scope="row">Segunda cópia conferida em outro disco</th><td class="no">Não</td><td class="yes">Sim</td></tr>
+            <tr><th scope="row">Arquivos com o mesmo nome</th><td class="no">Pergunta se substitui</td><td class="yes">Nunca substitui</td></tr>
+            <tr><th scope="row">Mostra o que vai acontecer antes</th><td class="no">Não</td><td class="yes">Sim, com simulação</td></tr>
+            <tr><th scope="row">Desfaz uma organização inteira</th><td class="no">Não</td><td class="yes">Com um clique</td></tr>
+            <tr><th scope="row">Diz se o disco pode ser apagado</th><td class="no">Não</td><td class="yes">Sim, arquivo por arquivo</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="criador">
+    <div class="wrap founder">
+      <div>
+        <h2 id="criador">Feito por quem também não pode perder um arquivo</h2>
+        <blockquote>
+          “Depois de cada voo e de cada ensaio, eu perdia tempo copiando cartões, corrigindo horários e torcendo para o backup estar inteiro. Criei esses apps para o meu próprio trabalho. Agora o Mac faz isso por mim, com prova.”
+        </blockquote>
+        <p class="who">Leo Nogueira, piloto de drone e fotógrafo no Rio de Janeiro</p>
+      </div>
+      <ul class="rules" aria-label="As regras que os três apps seguem">
+        <li><strong>Nada é apagado sem a sua decisão</strong><span>Duplicatas e arquivos com problema vão para pastas próprias. Você decide.</span></li>
+        <li><strong>Cada cópia é conferida pelo conteúdo</strong><span>Nome e tamanho não bastam: a cópia precisa ser idêntica ao original.</span></li>
+        <li><strong>Você vê antes de acontecer</strong><span>Simulações e relatórios mostram cada passo antes de qualquer mudança.</span></li>
+        <li><strong>Suas fotos não saem do seu Mac</strong><span>Sem conta, sem anúncios, sem coleta de dados.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="duvidas" aria-labelledby="perguntas">
+    <div class="wrap">
+      <h2 id="perguntas">O que perguntam antes de baixar</h2>
+      <div class="faq">
+        <details>
+          <summary>Preciso comprar os três apps?</summary>
+          <p>Não. Cada app funciona sozinho e é comprado separadamente. Comece pelo que resolve o seu problema de hoje.</p>
+        </details>
+        <details>
+          <summary>É assinatura?</summary>
+          <p>Não. O download é grátis e o desbloqueio é uma compra única pela Mac App Store, válida nos Macs com a mesma Conta Apple.</p>
+        </details>
+        <details>
+          <summary>O teste grátis cobra alguma coisa?</summary>
+          <p>Não. Os 14 dias de teste não renovam sozinhos e nunca são cobrados. Quando terminam, seus projetos e arquivos continuam intactos.</p>
+        </details>
+        <details>
+          <summary>Os apps podem apagar ou estragar meus arquivos?</summary>
+          <p>Não. O FlightFrame só lê o cartão, o Acervo nunca sobrescreve nem apaga e desfaz qualquer organização, e o Guardian só lê as pastas que você escolhe.</p>
+        </details>
+        <details>
+          <summary>Funciona no meu Mac?</summary>
+          <p>Os três funcionam em Macs com Apple Silicon ou Intel. O Acervo pede macOS 13 ou mais novo, o Guardian macOS 14 e o FlightFrame macOS 15.</p>
+        </details>
+        <details>
+          <summary>Funciona com NAS e com o Lightroom?</summary>
+          <p>Sim. Os três trabalham com discos externos e volumes de NAS montados no Mac, como Synology e QNAP. O FlightFrame tem integração direta com o Lightroom Classic, e o Acervo mantém os arquivos XMP junto das fotos.</p>
+        </details>
+        <details>
+          <summary>A conferência do SARPAS substitui a autorização?</summary>
+          <p>Não. O FlightFrame compara cada voo com a autorização que você já tem, de forma informativa. A autorização continua sendo feita no SARPAS e a responsabilidade pelo voo é do piloto.</p>
+        </details>
+        <details>
+          <summary>Tem versão para Windows?</summary>
+          <p>Não. Os apps são nativos para Mac.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="lista" class="band" aria-labelledby="avisos">
+    <div class="wrap signup">
+      <div>
+        <h2 id="avisos">Seja avisado do lançamento do Guardian</h2>
+        <p class="intro">Um e-mail quando o Photo Backup Guardian chegar à App Store e quando houver novidade importante nos outros apps. Nada além disso.</p>
+      </div>
+      <!-- Troque SEU_ID pelo código do seu formulário (Formspree, MailerLite, Buttondown etc.). Veja as instruções. -->
+      <form id="form-lista" action="https://formspree.io/f/SEU_ID" method="POST">
+        <label for="email">Seu e-mail</label>
+        <input id="email" name="email" type="email" autocomplete="email" required placeholder="voce@exemplo.com">
+        <input type="hidden" name="origem" value="apps.ravendronevideos.com.br">
+        <button class="btn btn-primary" type="submit">Quero ser avisado</button>
+        <p class="form-msg" id="form-msg" role="status"></p>
+        <p class="fine">Você pode sair da lista com um clique em qualquer e-mail.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Raven, Leonardo Nogueira. Esta página não usa cookies.</p>
+    <nav aria-label="Links">
+      <a href="https://flightframe.ravendronevideos.com.br">FlightFrame Studio</a>
+      <a href="https://acervoorganizer.ravendronevideos.com.br">Acervo Organizer</a>
+      <a href="https://photobackupguardian.app">Photo Backup Guardian</a>
+      <a href="mailto:support@internetmidia.com">Suporte</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  document.documentElement.classList.add('js');
+
+  // Relatório: uma única sequência ao carregar a página
+  var rows = Array.prototype.slice.call(document.querySelectorAll('.rows li'));
+  var foot = document.querySelector('.report-foot');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function finish() { rows.forEach(function (r) { r.classList.add('done'); }); foot.classList.add('done'); }
+  if (reduce) { finish(); } else {
+    rows.forEach(function (r, i) { setTimeout(function () { r.classList.add('done'); }, 450 + i * 420); });
+    setTimeout(function () { foot.classList.add('done'); }, 450 + rows.length * 420 + 150);
+  }
+
+  // Por onde começar
+  var answers = {
+    ff: { t: 'Comece pelo FlightFrame Studio', p: 'É grátis e resolve o próximo cartão: cópia conferida, voos separados e o projeto pronto para editar. Depois, se quiser, o Pro faz o backup no segundo disco e abre tudo no Lightroom.', b: 'Baixar o FlightFrame grátis', h: 'https://apps.apple.com/app/flightframe-studio/id6822035026' },
+    ao: { t: 'Comece pelo Acervo Organizer', p: 'Faça a análise gratuita do HD ou do NAS e veja quantas duplicatas e arquivos com problema existem. Simule a organização antes de mover qualquer coisa. Para os próximos cartões, use o FlightFrame.', b: 'Experimentar o Acervo grátis', h: 'https://apps.apple.com/app/id6821982992?mt=12' },
+    pbg: { t: 'O Photo Backup Guardian é para você', p: 'Ele confere, arquivo por arquivo, se cada foto tem as cópias que você exige e diz quando um disco pode ser apagado. Está em beta: entre na lista para ser avisado no lançamento.', b: 'Quero ser avisado', h: '#lista' }
+  };
+  var box = document.getElementById('resposta');
+  document.querySelectorAll('.option').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.option').forEach(function (o) { o.setAttribute('aria-pressed', 'false'); });
+      btn.setAttribute('aria-pressed', 'true');
+      var a = answers[btn.dataset.pick];
+      box.removeAttribute('data-changed'); void box.offsetWidth; box.setAttribute('data-changed', '');
+      box.innerHTML = '';
+      var h = document.createElement('h3'); h.textContent = a.t;
+      var p = document.createElement('p'); p.textContent = a.p;
+      var l = document.createElement('a'); l.className = 'btn btn-primary'; l.href = a.h; l.textContent = a.b;
+      box.append(h, p, l);
+    });
+  });
+
+  // Lista de e-mail
+  var form = document.getElementById('form-lista');
+  var msg = document.getElementById('form-msg');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = form.email.value.trim();
+    if (form.action.indexOf('SEU_ID') !== -1) {
+      window.location.href = 'mailto:support@internetmidia.com?subject=' + encodeURIComponent('Quero ser avisado do lançamento do Guardian') + '&body=' + encodeURIComponent(email);
+      return;
+    }
+    msg.textContent = 'Enviando…';
+    fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+      .then(function (r) {
+        if (r.ok) { form.reset(); msg.textContent = 'Pronto. Você será avisado no lançamento.'; }
+        else { msg.textContent = 'Não foi possível cadastrar agora. Tente de novo em alguns minutos.'; }
+      })
+      .catch(function () { msg.textContent = 'Sem conexão. Verifique a internet e tente de novo.'; });
+  });
+})();
+</script>
+</body>
+</html>
