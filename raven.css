@@ -44,6 +44,8 @@ body {
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
+/* Evita palavra sozinha no fim de parágrafos e listas */
+p, li, summary, blockquote, .lede, .intro, .price small { text-wrap: pretty; }
 :focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 4px; }
 .wrap { width: min(1120px, 100% - 2.5rem); margin-inline: auto; }
 
@@ -140,7 +142,7 @@ h2 {
   margin: 0 0 1rem; font-size: clamp(1.8rem, 3.4vw, 2.6rem); line-height: 1.08;
   font-weight: 740; font-variation-settings: "wdth" 108; letter-spacing: -.01em; text-wrap: balance;
 }
-.intro { max-width: var(--measure); color: var(--text-2); margin: 0 0 2.5rem; font-size: 1.1rem; }
+.intro { max-width: 40rem; color: var(--text-2); margin: 0 0 2.5rem; font-size: 1.1rem; }
 
 /* Dores */
 .pains { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 0; padding: 0; list-style: none; border-top: 2px solid var(--orange); }
