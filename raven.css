@@ -59,7 +59,7 @@ p, li, summary, blockquote, .lede, .intro, .price small { text-wrap: pretty; }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 21; background: var(--bg); }
 .top .wrap { display: flex; align-items: center; gap: 1.5rem; height: 64px; }
 .brand { display: flex; align-items: center; gap: .55rem; text-decoration: none; font-weight: 750; font-variation-settings: "wdth" 118; font-size: 1.15rem; letter-spacing: .01em; }
-.brand svg { width: 30px; height: 30px; }
+.brand img { width: 44px; height: 44px; }
 .top nav { margin-left: auto; display: flex; align-items: center; gap: 1.4rem; font-size: .95rem; }
 .top nav a { text-decoration: none; color: var(--text-2); }
 .top nav a:hover { color: var(--text); }
@@ -241,4 +241,5 @@ footer .wrap { display: grid; gap: 1.25rem; }
 footer nav { display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; }
 footer a { text-decoration: none; color: #FFFFFF; }
 footer a:hover { text-decoration: underline; }
+.foot-logo { width: 160px; height: auto; }
 .legal { margin: 0; font-size: .8rem; color: #8FA0B8; max-width: 60rem; }
