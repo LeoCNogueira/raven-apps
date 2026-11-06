@@ -542,11 +542,15 @@ footer a:hover { color: var(--ink); text-decoration: underline; }
         <h2 id="avisos">Seja avisado do lançamento do Guardian</h2>
         <p class="intro">Um e-mail quando o Photo Backup Guardian chegar à App Store e quando houver novidade importante nos outros apps. Nada além disso.</p>
       </div>
-      <!-- Troque SEU_ID pelo código do seu formulário (Formspree, MailerLite, Buttondown etc.). Veja as instruções. -->
-      <form id="form-lista" action="https://formspree.io/f/SEU_ID" method="POST">
+      <!-- MAILCHIMP: cole no action abaixo a URL do seu formulário incorporado
+           (Público > Formulários de inscrição > Formulários incorporados), no formato
+           https://XXXX.usNN.list-manage.com/subscribe/post?u=...&id=...&f_id=...
+           Atenção: no HTML, troque cada & da URL por &amp; -->
+      <form id="form-lista" action="COLE_AQUI_A_URL_DO_MAILCHIMP" method="post" target="_blank">
         <label for="email">Seu e-mail</label>
-        <input id="email" name="email" type="email" autocomplete="email" required placeholder="voce@exemplo.com">
-        <input type="hidden" name="origem" value="apps.ravendronevideos.com.br">
+        <input id="email" name="EMAIL" type="email" autocomplete="email" required placeholder="voce@exemplo.com">
+        <!-- Campo anti-robô do Mailchimp: fica escondido e vazio -->
+        <div aria-hidden="true" style="position:absolute; left:-5000px;"><input type="text" id="mc-honeypot" tabindex="-1" value=""></div>
         <button class="btn btn-primary" type="submit">Quero ser avisado</button>
         <p class="form-msg" id="form-msg" role="status"></p>
         <p class="fine">Você pode sair da lista com um clique em qualquer e-mail.</p>
@@ -606,20 +610,43 @@ footer a:hover { color: var(--ink); text-decoration: underline; }
   // Lista de e-mail
   var form = document.getElementById('form-lista');
   var msg = document.getElementById('form-msg');
+  var action = form.getAttribute('action');
+  var configured = action.indexOf('list-manage.com/subscribe/post') !== -1;
+  if (configured) {
+    // O Mailchimp exige um campo anti-robô com o nome b_<u>_<id>
+    var q = new URL(action, location.href).searchParams;
+    document.getElementById('mc-honeypot').name = 'b_' + q.get('u') + '_' + q.get('id');
+  }
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var email = form.email.value.trim();
-    if (form.action.indexOf('SEU_ID') !== -1) {
+    var email = form.EMAIL.value.trim();
+    if (!configured) {
       window.location.href = 'mailto:support@internetmidia.com?subject=' + encodeURIComponent('Quero ser avisado do lançamento do Guardian') + '&body=' + encodeURIComponent(email);
       return;
     }
     msg.textContent = 'Enviando…';
-    fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
-      .then(function (r) {
-        if (r.ok) { form.reset(); msg.textContent = 'Pronto. Você será avisado no lançamento.'; }
-        else { msg.textContent = 'Não foi possível cadastrar agora. Tente de novo em alguns minutos.'; }
-      })
-      .catch(function () { msg.textContent = 'Sem conexão. Verifique a internet e tente de novo.'; });
+    // post-json responde com JSONP, o que permite confirmar sem sair da página
+    var cb = 'mcRaven' + Date.now();
+    var params = new URLSearchParams(new FormData(form)).toString();
+    var url = action.replace('/subscribe/post?', '/subscribe/post-json?') + '&' + params + '&c=' + cb;
+    var s = document.createElement('script');
+    var timer = setTimeout(function () { cleanup(); msg.textContent = 'Sem resposta do servidor. Tente de novo em alguns minutos.'; }, 10000);
+    function cleanup() { clearTimeout(timer); delete window[cb]; s.remove(); }
+    window[cb] = function (resp) {
+      cleanup();
+      if (resp && resp.result === 'success') {
+        form.reset();
+        msg.textContent = 'Inscrição recebida. Se chegar um e-mail de confirmação, clique no link para concluir.';
+      } else {
+        var text = String((resp && resp.msg) || '');
+        if (/already subscribed|já está inscrit/i.test(text)) { msg.textContent = 'Esse e-mail já está na lista. Você será avisado.'; }
+        else if (/too many/i.test(text)) { msg.textContent = 'Muitas tentativas com esse e-mail. Tente de novo mais tarde.'; }
+        else { msg.textContent = 'Não foi possível cadastrar. Confira o e-mail e tente de novo.'; }
+      }
+    };
+    s.onerror = function () { cleanup(); msg.textContent = 'Sem conexão. Verifique a internet e tente de novo.'; };
+    s.src = url;
+    document.body.appendChild(s);
   });
 })();
 </script>
