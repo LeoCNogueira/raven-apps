@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Raven Apps para Mac: copiar o cartão não é fazer backup</title>
+<meta name="description" content="Três apps para Mac que conferem cada foto e vídeo, do cartão ao backup. Grátis para começar, compra única, sem conta.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://apps.ravendronevideos.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Copiar o cartão não é fazer backup">
+<meta property="og:description" content="FlightFrame Studio, Acervo Organizer e Photo Backup Guardian: três apps para Mac de quem voa e fotografa.">
+<meta property="og:url" content="https://apps.ravendronevideos.com.br/instagram/">
+<meta property="og:image" content="https://flightframe.ravendronevideos.com.br/assets/og-image.jpg">
+<meta name="theme-color" content="#0B1F3A">
+<link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0B1F3A; --navy-2: #132D52; --orange: #FF7A1A; --orange-ink: #B84F06; --on-orange: #0B1F3A;
+  --bg: #FFFFFF; --mist: #F3F6FA; --surface: #FFFFFF; --text: #0B1F3A; --text-2: #4B5B70; --line: #DCE3EC;
+  --soft: #C9D4E3;
+  --font: "Archivo", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light; box-sizing: border-box;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #071426; --mist: #0B1F3A; --surface: #0E2442; --text: #F4F7FB; --text-2: #A9B6C8; --line: #1F3A60; --orange-ink: #FF9A4D; color-scheme: dark; }
+}
+*, *::before, *::after { box-sizing: inherit; }
+html { scroll-behavior: smooth; scroll-padding-top: 16px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font); font-size: 1.0625rem; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+body.has-sticky { padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+p, li, summary { text-wrap: pretty; }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 4px; }
+.wrap { width: min(1080px, 100% - 2.5rem); margin-inline: auto; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .55rem; min-height: 54px; padding: .8rem 1.4rem;
+  border-radius: 12px; border: 1.5px solid currentColor; background: transparent; color: inherit;
+  font: inherit; font-weight: 700; font-size: 1.05rem; text-decoration: none; cursor: pointer; text-align: center;
+}
+.btn-primary { background: var(--orange); border-color: var(--orange); color: var(--on-orange); }
+.btn-primary:hover { background: #FF8C3A; border-color: #FF8C3A; }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.store-badge { display: inline-block; padding: 12px; margin: -12px; line-height: 0; }
+.store-badge img { height: 52px; width: auto; }
+/* Mac vê os selos; celular vê "enviar para o Mac" */
+html:not(.is-mac) .only-mac, html:not(.is-mobile) .only-mobile { display: none !important; }
+
+/* Herói */
+.hero { background: var(--navy); color: #FFFFFF; padding: max(20px, env(safe-area-inset-top, 0px)) 0 2.75rem; overflow: hidden; position: relative; }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .25rem 0 2rem; }
+.brand { display: flex; align-items: center; gap: .55rem; font-weight: 750; font-variation-settings: "wdth" 118; text-decoration: none; font-size: 1.1rem; }
+.brand img { width: 40px; height: 40px; }
+.pill { font-size: .82rem; font-weight: 650; color: var(--soft); border: 1px solid rgba(255,255,255,.25); border-radius: 999px; padding: .25rem .7rem; }
+.hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem; align-items: center; }
+@media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; gap: 2rem; } }
+h1 { margin: 0 0 1rem; font-size: clamp(2.3rem, 8vw, 4rem); line-height: 1.02; font-weight: 780; font-variation-settings: "wdth" 112; letter-spacing: -.015em; text-wrap: balance; }
+.sub { margin: 0 0 1.75rem; font-size: 1.15rem; color: var(--soft); max-width: 32rem; }
+.cta-stack { display: grid; gap: .75rem; max-width: 26rem; }
+.cta-stack .btn { width: 100%; }
+.cta-hint { display: block; font-size: .8rem; font-weight: 500; opacity: .8; }
+.btn-light { color: #FFFFFF; border-color: rgba(255,255,255,.5); }
+.mac-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem 1.5rem; }
+.facts { list-style: none; margin: 1.5rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .35rem 1.25rem; font-size: .92rem; color: var(--soft); }
+.facts li { display: flex; align-items: center; gap: .4rem; }
+.facts svg { width: 15px; height: 15px; color: var(--orange); }
+.report { background: #FFFFFF; color: #0B1F3A; border-radius: 14px; padding: 1rem 1.1rem .85rem; box-shadow: 0 30px 60px -30px rgba(0,0,0,.6); border-top: 4px solid var(--orange); }
+.report-head { display: flex; justify-content: space-between; gap: .75rem; font-size: .9rem; padding-bottom: .6rem; border-bottom: 1px solid #DCE3EC; }
+.report-head span { color: #4B5B70; font-size: .8rem; }
+.rows { list-style: none; margin: 0; padding: .2rem 0; }
+.rows li { display: flex; justify-content: space-between; gap: 1rem; padding: .5rem 0; border-bottom: 1px dashed #DCE3EC; font-size: .9rem; font-weight: 600; }
+.rows li:last-child { border-bottom: 0; }
+.ok { color: #B84F06; font-weight: 700; display: inline-flex; align-items: center; gap: .3rem; }
+.ok svg { width: 14px; height: 14px; }
+.report-foot { padding-top: .6rem; border-top: 1px solid #DCE3EC; font-size: .85rem; }
+.report-foot b { color: #B84F06; }
+
+/* Seções */
+section { padding: 3.25rem 0; }
+.alt { background: var(--mist); }
+h2 { margin: 0 0 .75rem; font-size: clamp(1.7rem, 5.5vw, 2.4rem); line-height: 1.08; font-weight: 750; font-variation-settings: "wdth" 108; letter-spacing: -.01em; text-wrap: balance; }
+.lead { margin: 0 0 1.75rem; color: var(--text-2); max-width: 36rem; }
+.pains { list-style: none; margin: 0; padding: 0; display: grid; gap: .75rem; grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 760px) { .pains { grid-template-columns: 1fr; } }
+.pains li { padding: 1.1rem 1.15rem; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--orange); }
+.pains strong { display: block; margin-bottom: .2rem; }
+.pains p { margin: 0; color: var(--text-2); font-size: .97rem; }
+
+.apps { display: grid; gap: 1rem; grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 900px) { .apps { grid-template-columns: 1fr; } }
+.app { display: flex; flex-direction: column; gap: .8rem; padding: 1.35rem; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); }
+.app.featured { border: 2px solid var(--orange); box-shadow: 0 18px 40px -28px rgba(255,122,26,.7); }
+.app-top { display: flex; align-items: center; gap: .8rem; }
+.app-top img { width: 56px; height: 56px; border-radius: 13px; }
+.moment { margin: 0; font-size: .82rem; font-weight: 650; color: var(--orange-ink); }
+.app h3 { margin: 0; font-size: 1.3rem; line-height: 1.15; font-weight: 730; }
+.promise { margin: 0; font-weight: 600; }
+.app ul { margin: 0; padding-left: 1.1rem; color: var(--text-2); font-size: .97rem; flex: 1; }
+.app li { margin: .25rem 0; }
+.app li::marker { color: var(--orange); }
+.price { margin: 0; font-size: .92rem; color: var(--text-2); }
+.price b { color: var(--text); }
+.app .btn { width: 100%; }
+.app .btn-outline { color: var(--text); border-color: var(--line); }
+
+.compare { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: 14px; overflow: hidden; border: 1px solid var(--line); font-size: .97rem; }
+.compare th, .compare td { padding: .8rem 1rem; text-align: left; border-bottom: 1px solid var(--line); }
+.compare thead th { background: var(--navy); color: #FFFFFF; }
+.compare tbody tr:last-child > * { border-bottom: 0; }
+.compare tbody th { font-weight: 500; }
+.compare .no { color: var(--text-2); }
+.compare .yes { color: var(--orange-ink); font-weight: 700; }
+
+.founder { display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: center; background: var(--navy); color: #FFFFFF; border-radius: 18px; padding: 1.5rem; }
+.founder img { width: 88px; height: auto; }
+@media (max-width: 560px) { .founder { grid-template-columns: 1fr; } }
+.founder blockquote { margin: 0; font-size: 1.15rem; line-height: 1.4; font-weight: 560; }
+.founder p { margin: .6rem 0 0; color: var(--soft); font-size: .92rem; }
+
+.faq { max-width: 44rem; }
+details { border-top: 1px solid var(--line); }
+details:last-of-type { border-bottom: 1px solid var(--line); }
+summary { cursor: pointer; list-style: none; padding: 1rem 2rem 1rem 0; font-weight: 650; position: relative; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; position: absolute; right: .25rem; top: .8rem; font-size: 1.4rem; color: var(--orange); font-weight: 400; }
+details[open] summary::after { content: "–"; }
+details p { margin: 0 0 1rem; color: var(--text-2); }
+
+.final { background: var(--navy); color: #FFFFFF; text-align: left; }
+.final .lead { color: var(--soft); }
+.final-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+@media (max-width: 860px) { .final-grid { grid-template-columns: 1fr; } }
+form { display: grid; gap: .65rem; position: relative; }
+label { font-weight: 650; font-size: .95rem; }
+input[type="email"] { font: inherit; font-size: 1.05rem; min-height: 54px; padding: .8rem 1rem; border-radius: 12px; border: 1.5px solid rgba(255,255,255,.35); background: #FFFFFF; color: #0B1F3A; }
+input[type="email"]:focus-visible { border-color: var(--orange); outline-offset: 1px; }
+.fine { margin: 0; font-size: .85rem; color: var(--soft); }
+.form-msg { margin: 0; min-height: 1.4em; font-weight: 650; color: #FFB27A; }
+
+footer { padding: 1.75rem 0 2rem; font-size: .85rem; color: var(--text-2); }
+footer .wrap { display: grid; gap: .6rem; }
+footer a { color: var(--text); }
+.legal { margin: 0; font-size: .75rem; }
+
+/* Barra fixa no celular */
+.sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: .65rem 1rem calc(.65rem + env(safe-area-inset-bottom, 0px)); background: rgba(11,31,58,.97); border-top: 1px solid rgba(255,255,255,.12); transform: translateY(110%); transition: transform .25s ease; }
+.sticky.show { transform: none; }
+.sticky .btn { width: 100%; min-height: 52px; }
+@media (prefers-reduced-motion: reduce) { .sticky { transition: none; } }
+.toast { position: fixed; left: 50%; bottom: calc(96px + env(safe-area-inset-bottom, 0px)); translate: -50% 0; z-index: 40; max-width: min(92vw, 26rem); background: #FFFFFF; color: #0B1F3A; border-radius: 12px; padding: .8rem 1rem; font-size: .95rem; font-weight: 600; box-shadow: 0 16px 40px -16px rgba(0,0,0,.5); opacity: 0; pointer-events: none; transition: opacity .2s ease; }
+.toast.show { opacity: 1; }
+
+/* Consentimento */
+.consent { position: fixed; left: .75rem; right: .75rem; bottom: calc(.75rem + env(safe-area-inset-bottom, 0px)); z-index: 50; display: none; max-width: 34rem; margin-inline: auto; background: #FFFFFF; color: #0B1F3A; border-radius: 14px; padding: .9rem 1rem; box-shadow: 0 20px 50px -20px rgba(0,0,0,.55); font-size: .88rem; }
+.consent p { margin: 0 0 .7rem; }
+.consent div { display: flex; gap: .5rem; }
+.consent button { flex: 1; min-height: 44px; border-radius: 10px; font: inherit; font-weight: 700; cursor: pointer; border: 1.5px solid #0B1F3A; background: #FFFFFF; color: #0B1F3A; }
+.consent button.yes { background: #0B1F3A; color: #FFFFFF; }
+</style>
+</head>
+<body>
+
+<header class="hero" id="topo">
+  <div class="wrap">
+    <div class="bar">
+      <a class="brand" href="/" aria-label="Raven Apps, site principal"><img src="/raven-mark-128.png" alt="" width="40" height="40">Raven</a>
+      <span class="pill">Apps para Mac</span>
+    </div>
+    <div class="hero-grid">
+      <div>
+        <h1 id="h1">Copiar o cartão não é fazer backup.</h1>
+        <p class="sub" id="sub">Três apps para Mac que conferem cada foto e vídeo, do cartão ao acervo protegido.</p>
+
+        <!-- No celular: o objetivo é levar o link até o Mac -->
+        <div class="cta-stack only-mobile" id="cta-mobile">
+          <button class="btn btn-primary js-send" type="button" data-share="page">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v10H4zM2 19h20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Enviar para o meu Mac<span class="cta-hint">por AirDrop, Mensagens ou Notas</span></span>
+          </button>
+          <a class="btn btn-light" href="#receber" data-track="email_anchor">Receber os links por e-mail</a>
+        </div>
+
+        <!-- No Mac: baixar direto -->
+        <div class="mac-row only-mac flexy" id="cta-mac">
+          <a class="store-badge" href="https://apps.apple.com/app/flightframe-studio/id6822035026" data-app="flightframe" data-cta="app_store"><img src="/mac-app-store-badge.svg" alt="Baixar o FlightFrame Studio na Mac App Store" height="52"></a>
+          <a class="btn btn-light" href="#apps">Ver os 3 apps</a>
+        </div>
+
+        <ul class="facts">
+          <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Grátis para começar</li>
+          <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Compra única, sem assinatura</li>
+          <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sem conta e sem nuvem</li>
+        </ul>
+      </div>
+
+      <figure class="report" aria-label="Exemplo de relatório de verificação do FlightFrame Studio" style="margin:0">
+        <div class="report-head"><strong>Voo das 15h02</strong><span>conferência SHA-256</span></div>
+        <ol class="rows">
+          <li>DJI_0412.DNG<span class="ok"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Verificado</span></li>
+          <li>DJI_0413.MP4<span class="ok"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Verificado</span></li>
+          <li>IMG_2087.CR3<span class="ok"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Verificado</span></li>
+        </ol>
+        <figcaption class="report-foot"><b>128 de 128</b> arquivos idênticos ao original. Backup no segundo disco conferido.</figcaption>
+      </figure>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section aria-labelledby="dor">
+    <div class="wrap">
+      <h2 id="dor">O risco começa depois da foto</h2>
+      <p class="lead">O ensaio ou o voo deu certo. O problema aparece quando o cartão chega ao Mac.</p>
+      <ul class="pains">
+        <li><strong>“A cópia terminou. Chegou inteira?”</strong><p>O Finder não confere. Um arquivo corrompido só aparece na edição.</p></li>
+        <li><strong>“Qual é a versão certa?”</strong><p>A mesma foto em três HDs e ninguém sabe qual pode ir embora.</p></li>
+        <li><strong>“Posso formatar este disco?”</strong><p>Ter backup não garante que ele esteja completo.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="alt" id="apps" aria-labelledby="tres">
+    <div class="wrap">
+      <h2 id="tres">Um app para cada momento do arquivo</h2>
+      <p class="lead">Use só o que precisa hoje. Eles funcionam sozinhos e se completam.</p>
+      <div class="apps" id="apps-list">
+
+        <article class="app" data-key="flightframe">
+          <div class="app-top"><img src="https://flightframe.ravendronevideos.com.br/assets/icon.png" alt="" width="56" height="56" loading="lazy"><div><p class="moment">Depois do voo ou do ensaio</p><h3>FlightFrame Studio</h3></div></div>
+          <p class="promise">Solte o cartão e saia com a prova de que tudo chegou inteiro.</p>
+          <ul>
+            <li>Confere cada arquivo por SHA-256, com relatório.</li>
+            <li>Backup conferido no segundo disco ou NAS.</li>
+            <li>Separa voos, corrige a hora do drone e abre no Lightroom.</li>
+          </ul>
+          <p class="price"><b>Grátis</b>. Pro por R$ 99,90, compra única. Requer macOS 15.</p>
+          <a class="store-badge only-mac" href="https://apps.apple.com/app/flightframe-studio/id6822035026" data-app="flightframe" data-cta="app_store"><img src="/mac-app-store-badge.svg" alt="Baixar o FlightFrame Studio na Mac App Store" height="52" loading="lazy"></a>
+          <button class="btn btn-primary only-mobile js-send" type="button" data-share="flightframe">Enviar o FlightFrame para o Mac</button>
+        </article>
+
+        <article class="app" data-key="acervo">
+          <div class="app-top"><img src="https://acervoorganizer.ravendronevideos.com.br/assets/icone-256.png" alt="" width="56" height="56" loading="lazy"><div><p class="moment">Para anos de arquivos</p><h3>Acervo Organizer</h3></div></div>
+          <p class="promise">Organize HDs e NAS sem arriscar um único arquivo.</p>
+          <ul>
+            <li>Acha duplicatas pelo conteúdo, não pelo nome.</li>
+            <li>Mostra o destino antes de mover. Nada é apagado.</li>
+            <li>Mantém RAW, JPG e XMP juntos. Desfaz tudo em um clique.</li>
+          </ul>
+          <p class="price"><b>Análise grátis</b>. Pro por R$ 89,90, compra única. Requer macOS 13.</p>
+          <a class="store-badge only-mac" href="https://apps.apple.com/app/id6821982992?mt=12" data-app="acervo_organizer" data-cta="app_store"><img src="/mac-app-store-badge.svg" alt="Baixar o Acervo Organizer na Mac App Store" height="52" loading="lazy"></a>
+          <button class="btn btn-primary only-mobile js-send" type="button" data-share="acervo">Enviar o Acervo para o Mac</button>
+        </article>
+
+        <article class="app" data-key="guardian">
+          <div class="app-top"><img src="https://photobackupguardian.app/icon.png" alt="" width="56" height="56" loading="lazy"><div><p class="moment">Sempre, depois de tudo</p><h3>Photo Backup Guardian</h3></div></div>
+          <p class="promise">Saiba, arquivo por arquivo, se o seu backup está completo.</p>
+          <ul>
+            <li>Confere se cada foto tem as cópias que você exige.</li>
+            <li>Diz quando um disco pode ser apagado com segurança.</li>
+            <li>Só lê: nunca altera, move ou apaga nada.</li>
+          </ul>
+          <p class="price"><b>Em beta.</b> Entre na lista para ser avisado no lançamento.</p>
+          <a class="btn btn-outline" href="#receber" data-app="photo_backup_guardian" data-cta="waitlist">Quero ser avisado</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="finder">
+    <div class="wrap">
+      <h2 id="finder">Copiar não é conferir</h2>
+      <p class="lead">Arrastar a pasta no Finder e torcer não é backup.</p>
+      <div style="overflow-x:auto">
+        <table class="compare">
+          <thead><tr><th scope="col">Ao descarregar o cartão</th><th scope="col">Finder</th><th scope="col">Raven</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Confere cada arquivo</th><td class="no">Não</td><td class="yes">Sim</td></tr>
+            <tr><th scope="row">Segunda cópia conferida</th><td class="no">Não</td><td class="yes">Sim</td></tr>
+            <tr><th scope="row">Nunca substitui arquivos</th><td class="no">Não</td><td class="yes">Sim</td></tr>
+            <tr><th scope="row">Diz se o disco pode ser apagado</th><td class="no">Não</td><td class="yes">Sim</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" aria-label="Quem criou">
+    <div class="wrap">
+      <div class="founder">
+        <img src="/raven-logo-full.png" alt="Raven Drone Videos" width="88" height="87" loading="lazy">
+        <div>
+          <blockquote>“Criei esses apps para o meu próprio trabalho, depois de cada voo e de cada ensaio. Agora o Mac confere tudo por mim.”</blockquote>
+          <p>Leo Nogueira, piloto de drone e fotógrafo no Rio de Janeiro</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="duvidas">
+    <div class="wrap">
+      <h2 id="duvidas">Antes de baixar</h2>
+      <div class="faq">
+        <details><summary>Estou no celular. Como instalo?</summary><p>Os apps são para Mac. Toque em “Enviar para o meu Mac” e mande o link por AirDrop, Mensagens ou Notas, ou receba os links por e-mail e abra no computador.</p></details>
+        <details><summary>É assinatura?</summary><p>Não. O download é grátis e o Pro é uma compra única pela Mac App Store.</p></details>
+        <details><summary>Preciso dos três apps?</summary><p>Não. Cada um funciona sozinho. Comece pelo que resolve o problema de hoje.</p></details>
+        <details><summary>Minhas fotos vão para a nuvem?</summary><p>Não. Os apps trabalham no seu Mac, sem conta. O Guardian só consulta pastas de nuvem se você escolher conectar.</p></details>
+        <details><summary>Funciona no meu Mac?</summary><p>Funciona em Macs com Apple Silicon ou Intel. Acervo pede macOS 13, Guardian macOS 14 e FlightFrame macOS 15.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="final" id="receber" aria-labelledby="links">
+    <div class="wrap final-grid">
+      <div>
+        <h2 id="links">Receba os links para abrir no Mac</h2>
+        <p class="lead">Um e-mail com os três apps, pronto para abrir no computador. Você também é avisado quando o Photo Backup Guardian for lançado.</p>
+      </div>
+      <form id="form-lista" action="https://bricks4kidz.us12.list-manage.com/subscribe/post?u=a6c92d419f403bf0677f08e11&amp;id=b264ef6ccb&amp;f_id=002010e9f0" method="post" target="_blank">
+        <label for="email">Seu e-mail</label>
+        <input id="email" name="EMAIL" type="email" autocomplete="email" inputmode="email" required placeholder="voce@exemplo.com">
+        <!-- Para separar quem veio do Instagram, crie a tag no Mailchimp e cole aqui a linha que o construtor gera, por exemplo:
+             <input type="hidden" name="tags" value="1234567"> -->
+        <div aria-hidden="true" style="position:absolute; left:-5000px;"><input type="text" id="mc-honeypot" tabindex="-1" value=""></div>
+        <button class="btn btn-primary" type="submit">Enviar os links</button>
+        <p class="form-msg" id="form-msg" role="status"></p>
+        <p class="fine">Sem spam. Saia da lista com um clique.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0">© 2026 Raven Drone Videos, Leo Nogueira. <a href="/">Conheça o site completo</a>.</p>
+    <p class="legal">Apple, o logotipo da Apple, Mac e Mac App Store são marcas comerciais da Apple Inc., registradas nos EUA e em outros países. App Store é uma marca de serviço da Apple Inc., registrada nos EUA e em outros países.</p>
+  </div>
+</footer>
+
+<div class="sticky only-mobile" id="sticky" aria-hidden="true">
+  <button class="btn btn-primary js-send" type="button" data-share="page" tabindex="-1">Enviar para o meu Mac</button>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<div class="consent" id="consent" role="dialog" aria-label="Preferências de privacidade">
+  <p><strong>Métricas.</strong> Podemos usar Google Analytics e Meta Pixel para medir visitas e cliques. Só ativamos se você aceitar.</p>
+  <div><button class="yes" id="consent-yes" type="button">Aceitar</button><button id="consent-no" type="button">Não aceitar</button></div>
+</div>
+
+<script>
+/* ===== CONFIGURAÇÃO ===== */
+window.RAVEN_CONFIG = {
+  ga4MeasurementId: "G-ND2227V1E5",   // GA4 (o mesmo da página anterior)
+  metaPixelId: "",                     // Cole o ID do Meta Pixel (só números) para otimizar anúncios por conversão
+  appStoreProviderToken: ""            // Opcional: "pt" do App Store Connect > App Analytics > Campanhas
+};
+
+(function () {
+  "use strict";
+  var C = window.RAVEN_CONFIG;
+  var params = new URLSearchParams(location.search);
+  var root = document.documentElement;
+
+  /* ---- Plataforma: Mac (baixa direto) ou celular/PC (envia para o Mac) ---- */
+  var ua = navigator.userAgent;
+  var isMac = /Macintosh/.test(ua) && !(navigator.maxTouchPoints > 1);
+  root.classList.add(isMac ? "is-mac" : "is-mobile");
+
+  /* ---- Variante do anúncio: ?app=flightframe | acervo | guardian ---- */
+  var V = {
+    flightframe: { h1: "Solte o cartão. Saia com a prova.", sub: "O FlightFrame Studio copia, confere cada arquivo por SHA-256 e separa os voos. Grátis para começar." },
+    acervo: { h1: "Anos de fotos. Zero bagunça.", sub: "O Acervo Organizer acha duplicatas pelo conteúdo e organiza HDs e NAS sem apagar nada." },
+    guardian: { h1: "Seu backup está mesmo completo?", sub: "O Photo Backup Guardian confere, arquivo por arquivo, se tudo tem cópia. Em beta: entre na lista." }
+  };
+  var variant = (params.get("app") || "").toLowerCase();
+  if (V[variant]) {
+    document.getElementById("h1").textContent = V[variant].h1;
+    document.getElementById("sub").textContent = V[variant].sub;
+    var list = document.getElementById("apps-list");
+    var card = list.querySelector('[data-key="' + variant + '"]');
+    if (card) { card.classList.add("featured"); list.insertBefore(card, list.firstChild); }
+    if (variant === "guardian") {
+      // Guardian ainda não está na loja: o objetivo é a lista
+      document.querySelectorAll('[data-share="page"]').forEach(function (b) {
+        var a = document.createElement("a"); a.className = b.className.replace("js-send", ""); a.href = "#receber"; a.textContent = "Quero ser avisado do lançamento";
+        a.setAttribute("data-track", "email_anchor"); b.replaceWith(a);
+      });
+    }
+  }
+  var campaign = params.get("utm_campaign") || "instagram";
+
+  /* ---- Links da App Store com token de campanha (se configurado) ---- */
+  if (C.appStoreProviderToken) {
+    document.querySelectorAll('a[href*="apps.apple.com"]').forEach(function (a) {
+      var u = new URL(a.href); u.searchParams.set("pt", C.appStoreProviderToken); u.searchParams.set("ct", campaign.slice(0, 40)); a.href = u.toString();
+    });
+  }
+
+  /* ---- Métricas com consentimento (LGPD) ---- */
+  var KEY = "raven_metrics_consent_v1";
+  function consent() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function loadMetrics() {
+    if (window.__ravenLoaded) return; window.__ravenLoaded = true;
+    if (/^G-[A-Z0-9]+$/.test(C.ga4MeasurementId || "")) {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag("js", new Date()); gtag("config", C.ga4MeasurementId, { page_variant: variant || "trio" });
+      var s = document.createElement("script"); s.async = true; s.src = "https://www.googletagmanager.com/gtag/js?id=" + C.ga4MeasurementId; document.head.appendChild(s);
+    }
+    if (/^\d{5,20}$/.test(C.metaPixelId || "")) {
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq("init", C.metaPixelId); fbq("track", "PageView");
+    }
+  }
+  function track(name, data) {
+    if (consent() !== "accepted") return;
+    data = Object.assign({ page_variant: variant || "trio", device_group: isMac ? "mac" : "mobile" }, data || {});
+    if (window.gtag) gtag("event", name, data);
+    if (window.fbq) {
+      if (name === "generate_lead") fbq("track", "Lead", data);
+      else if (name === "send_to_mac") fbq("trackCustom", "SendToMac", data);
+      else if (name === "app_cta_click") fbq("trackCustom", "RavenAppClick", data);
+      else if (name === "view_apps_section") fbq("track", "ViewContent", data);
+    }
+  }
+  var banner = document.getElementById("consent");
+  if (consent() === "accepted") loadMetrics(); else if (!consent()) banner.style.display = "block";
+  document.getElementById("consent-yes").onclick = function () { try { localStorage.setItem(KEY, "accepted"); } catch (e) {} banner.style.display = "none"; loadMetrics(); };
+  document.getElementById("consent-no").onclick = function () { try { localStorage.setItem(KEY, "rejected"); } catch (e) {} banner.style.display = "none"; };
+
+  /* ---- Enviar para o Mac: compartilhar > copiar > e-mail para si mesmo ---- */
+  var TARGET = {
+    page: location.origin + "/instagram/?utm_source=instagram&utm_medium=send_to_mac&utm_campaign=" + encodeURIComponent(campaign) + (variant ? "&app=" + variant : ""),
+    flightframe: "https://apps.apple.com/app/flightframe-studio/id6822035026",
+    acervo: "https://apps.apple.com/app/id6821982992?mt=12"
+  };
+  var toast = document.getElementById("toast"), tt;
+  function say(t) { toast.textContent = t; toast.classList.add("show"); clearTimeout(tt); tt = setTimeout(function () { toast.classList.remove("show"); }, 4200); }
+  function mailSelf(url) { location.href = "mailto:?subject=" + encodeURIComponent("Raven Apps: abrir no meu Mac") + "&body=" + encodeURIComponent("Abra no Mac: " + url); }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest(".js-send"); if (!b) return;
+    var key = b.getAttribute("data-share"), url = TARGET[key] || TARGET.page;
+    var title = key === "page" ? "Raven Apps para Mac" : b.textContent.replace("Enviar o ", "").replace(" para o Mac", "");
+    if (navigator.share) {
+      navigator.share({ title: title, text: "Abrir no meu Mac", url: url })
+        .then(function () { track("send_to_mac", { method: "share", target: key }); })
+        .catch(function () {});
+      return;
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(url).then(function () {
+        say("Link copiado. Cole numa conversa com você mesmo ou nas Notas e abra no Mac.");
+        track("send_to_mac", { method: "copy", target: key });
+      }, function () { mailSelf(url); track("send_to_mac", { method: "mailto", target: key }); });
+      return;
+    }
+    mailSelf(url); track("send_to_mac", { method: "mailto", target: key });
+  });
+
+  /* ---- Cliques na loja e âncoras ---- */
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("a[data-app]");
+    if (a) track("app_cta_click", { app_name: a.getAttribute("data-app"), cta_type: a.getAttribute("data-cta") || "outbound", link_url: a.href });
+    var t = e.target.closest("a[data-track]");
+    if (t) track(t.getAttribute("data-track"));
+  });
+
+  /* ---- Seção dos apps vista + barra fixa no celular ---- */
+  if ("IntersectionObserver" in window) {
+    var seen = false, apps = document.getElementById("apps");
+    new IntersectionObserver(function (en, ob) { if (!seen && en[0].isIntersecting) { seen = true; track("view_apps_section"); ob.disconnect(); } }, { threshold: .25 }).observe(apps);
+    if (!isMac) {
+      var sticky = document.getElementById("sticky"), heroCta = document.getElementById("cta-mobile"), final = document.getElementById("receber");
+      var heroOut = false, finalIn = false;
+      function update() {
+        var show = heroOut && !finalIn && banner.style.display !== "block";
+        sticky.classList.toggle("show", show); document.body.classList.toggle("has-sticky", show);
+        sticky.setAttribute("aria-hidden", show ? "false" : "true");
+        sticky.querySelectorAll("a,button").forEach(function (x) { x.tabIndex = show ? 0 : -1; });
+      }
+      new IntersectionObserver(function (en) { heroOut = !en[0].isIntersecting; update(); }).observe(heroCta);
+      new IntersectionObserver(function (en) { finalIn = en[0].isIntersecting; update(); }).observe(final);
+      document.getElementById("consent-yes").addEventListener("click", update);
+      document.getElementById("consent-no").addEventListener("click", update);
+    }
+  }
+
+  /* ---- Lista de e-mail (Mailchimp, sem sair da página) ---- */
+  var form = document.getElementById("form-lista"), msg = document.getElementById("form-msg");
+  var action = form.getAttribute("action");
+  var q = new URL(action, location.href).searchParams;
+  document.getElementById("mc-honeypot").name = "b_" + q.get("u") + "_" + q.get("id");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    msg.textContent = "Enviando…";
+    var cb = "mcRaven" + Date.now(), s = document.createElement("script");
+    var url = action.replace("/subscribe/post?", "/subscribe/post-json?") + "&" + new URLSearchParams(new FormData(form)).toString() + "&c=" + cb;
+    var timer = setTimeout(function () { done(); msg.textContent = "Sem resposta do servidor. Tente de novo em alguns minutos."; }, 10000);
+    function done() { clearTimeout(timer); delete window[cb]; s.remove(); }
+    window[cb] = function (r) {
+      done();
+      if (r && r.result === "success") { form.reset(); msg.textContent = "Pronto! Confirme no e-mail que acabamos de enviar. Os links chegam em seguida."; track("generate_lead", { form: "instagram_links" }); }
+      else if (/already subscribed|já está inscrit/i.test((r && r.msg) || "")) { msg.textContent = "Esse e-mail já está na lista. Confira sua caixa de entrada."; }
+      else { msg.textContent = "Não foi possível cadastrar. Confira o e-mail e tente de novo."; }
+    };
+    s.onerror = function () { done(); msg.textContent = "Sem conexão. Verifique a internet e tente de novo."; };
+    s.src = url; document.body.appendChild(s);
+  });
+})();
+</script>
+</body>
+</html>
