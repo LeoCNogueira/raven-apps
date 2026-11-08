@@ -12,7 +12,7 @@
 <meta property="og:description" content="FlightFrame Studio, Acervo Organizer e Photo Backup Guardian: três apps para Mac de quem voa e fotografa.">
 <meta property="og:url" content="https://apps.ravendronevideos.com.br/instagram/">
 <meta property="og:image" content="https://flightframe.ravendronevideos.com.br/assets/og-image.jpg">
-<meta name="theme-color" content="#0B1F3A">
+<meta name="theme-color" content="#07162B">
 <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,14 +20,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy: #0B1F3A; --navy-2: #132D52; --orange: #FF7A1A; --orange-ink: #B84F06; --on-orange: #0B1F3A;
-  --bg: #FFFFFF; --mist: #F3F6FA; --surface: #FFFFFF; --text: #0B1F3A; --text-2: #4B5B70; --line: #DCE3EC;
-  --soft: #C9D4E3;
+  --deep: #07162B;      /* topo e chamada final */
+  --navy: #0B1F3A;      /* fundo principal */
+  --navy-2: #0F2747;    /* seções alternadas */
+  --card: #143058;      /* cartões */
+  --orange: #FF7A1A; --orange-ink: #FF9A4D; --on-orange: #0B1F3A;
+  --bg: var(--navy); --mist: var(--navy-2); --surface: var(--card);
+  --text: #FFFFFF; --text-2: #B9C6D8; --line: rgba(255,255,255,.14); --soft: #C9D4E3;
   --font: "Archivo", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  color-scheme: light; box-sizing: border-box;
-}
-@media (prefers-color-scheme: dark) {
-  :root { --bg: #071426; --mist: #0B1F3A; --surface: #0E2442; --text: #F4F7FB; --text-2: #A9B6C8; --line: #1F3A60; --orange-ink: #FF9A4D; color-scheme: dark; }
+  color-scheme: dark; box-sizing: border-box;
 }
 *, *::before, *::after { box-sizing: inherit; }
 html { scroll-behavior: smooth; scroll-padding-top: 16px; }
@@ -53,7 +54,7 @@ p, li, summary { text-wrap: pretty; }
 html:not(.is-mac) .only-mac, html:not(.is-mobile) .only-mobile { display: none !important; }
 
 /* Herói */
-.hero { background: var(--navy); color: #FFFFFF; padding: max(20px, env(safe-area-inset-top, 0px)) 0 2.75rem; overflow: hidden; position: relative; }
+.hero { background: var(--deep); color: #FFFFFF; padding: max(20px, env(safe-area-inset-top, 0px)) 0 2.75rem; overflow: hidden; position: relative; }
 .bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .25rem 0 2rem; }
 .brand { display: flex; align-items: center; gap: .55rem; font-weight: 750; font-variation-settings: "wdth" 118; text-decoration: none; font-size: 1.1rem; }
 .brand img { width: 40px; height: 40px; }
@@ -82,7 +83,7 @@ h1 { margin: 0 0 1rem; font-size: clamp(2.3rem, 8vw, 4rem); line-height: 1.02; f
 .report-foot b { color: #B84F06; }
 
 /* Seções */
-section { padding: 3.25rem 0; }
+section { padding: 3.25rem 0; border-top: 1px solid rgba(255,255,255,.06); }
 .alt { background: var(--mist); }
 h2 { margin: 0 0 .75rem; font-size: clamp(1.7rem, 5.5vw, 2.4rem); line-height: 1.08; font-weight: 750; font-variation-settings: "wdth" 108; letter-spacing: -.01em; text-wrap: balance; }
 .lead { margin: 0 0 1.75rem; color: var(--text-2); max-width: 36rem; }
@@ -111,13 +112,13 @@ h2 { margin: 0 0 .75rem; font-size: clamp(1.7rem, 5.5vw, 2.4rem); line-height: 1
 
 .compare { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: 14px; overflow: hidden; border: 1px solid var(--line); font-size: .97rem; }
 .compare th, .compare td { padding: .8rem 1rem; text-align: left; border-bottom: 1px solid var(--line); }
-.compare thead th { background: var(--navy); color: #FFFFFF; }
+.compare thead th { background: var(--deep); color: #FFFFFF; }
 .compare tbody tr:last-child > * { border-bottom: 0; }
 .compare tbody th { font-weight: 500; }
 .compare .no { color: var(--text-2); }
 .compare .yes { color: var(--orange-ink); font-weight: 700; }
 
-.founder { display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: center; background: var(--navy); color: #FFFFFF; border-radius: 18px; padding: 1.5rem; }
+.founder { display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: center; background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--orange); color: #FFFFFF; border-radius: 18px; padding: 1.5rem; }
 .founder img { width: 88px; height: auto; }
 @media (max-width: 560px) { .founder { grid-template-columns: 1fr; } }
 .founder blockquote { margin: 0; font-size: 1.15rem; line-height: 1.4; font-weight: 560; }
@@ -132,7 +133,7 @@ summary::after { content: "+"; position: absolute; right: .25rem; top: .8rem; fo
 details[open] summary::after { content: "–"; }
 details p { margin: 0 0 1rem; color: var(--text-2); }
 
-.final { background: var(--navy); color: #FFFFFF; text-align: left; }
+.final { background: var(--deep); color: #FFFFFF; text-align: left; }
 .final .lead { color: var(--soft); }
 .final-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
 @media (max-width: 860px) { .final-grid { grid-template-columns: 1fr; } }
@@ -147,9 +148,10 @@ footer { padding: 1.75rem 0 2rem; font-size: .85rem; color: var(--text-2); }
 footer .wrap { display: grid; gap: .6rem; }
 footer a { color: var(--text); }
 .legal { margin: 0; font-size: .75rem; }
+.linkish { font: inherit; color: var(--text); text-decoration: underline; background: none; border: 0; padding: 0; cursor: pointer; }
 
 /* Barra fixa no celular */
-.sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: .65rem 1rem calc(.65rem + env(safe-area-inset-bottom, 0px)); background: rgba(11,31,58,.97); border-top: 1px solid rgba(255,255,255,.12); transform: translateY(110%); transition: transform .25s ease; }
+.sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: .65rem 1rem calc(.65rem + env(safe-area-inset-bottom, 0px)); background: rgba(7,22,43,.97); border-top: 1px solid rgba(255,255,255,.12); transform: translateY(110%); transition: transform .25s ease; }
 .sticky.show { transform: none; }
 .sticky .btn { width: 100%; min-height: 52px; }
 @media (prefers-reduced-motion: reduce) { .sticky { transition: none; } }
@@ -339,6 +341,7 @@ footer a { color: var(--text); }
 <footer>
   <div class="wrap">
     <p style="margin:0">© 2026 Raven Drone Videos, Leo Nogueira. <a href="/">Conheça o site completo</a>.</p>
+    <p class="legal" id="privacy-note">Medimos visitas e cliques de forma agregada com o Google Analytics, sem uso para publicidade. <button type="button" id="optout" class="linkish">Não quero ser medido</button></p>
     <p class="legal">Apple, o logotipo da Apple, Mac e Mac App Store são marcas comerciais da Apple Inc., registradas nos EUA e em outros países. App Store é uma marca de serviço da Apple Inc., registrada nos EUA e em outros países.</p>
   </div>
 </footer>
@@ -349,7 +352,7 @@ footer a { color: var(--text); }
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <div class="consent" id="consent" role="dialog" aria-label="Preferências de privacidade">
-  <p><strong>Métricas.</strong> Podemos usar Google Analytics e Meta Pixel para medir visitas e cliques. Só ativamos se você aceitar.</p>
+  <p><strong>Anúncios.</strong> Podemos usar o Meta Pixel para medir os resultados dos nossos anúncios no Instagram. Só ativamos se você aceitar.</p>
   <div><button class="yes" id="consent-yes" type="button">Aceitar</button><button id="consent-no" type="button">Não aceitar</button></div>
 </div>
 
@@ -402,24 +405,29 @@ window.RAVEN_CONFIG = {
     });
   }
 
-  /* ---- Métricas com consentimento (LGPD) ---- */
+  /* ---- Métricas (LGPD) ----
+     Google Analytics: medição de audiência por legítimo interesse, sem sinais de publicidade,
+     com opção de recusa no rodapé. Meta Pixel (publicidade): só com consentimento. */
   var KEY = "raven_metrics_consent_v1";
-  function consent() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
-  function loadMetrics() {
-    if (window.__ravenLoaded) return; window.__ravenLoaded = true;
-    if (/^G-[A-Z0-9]+$/.test(C.ga4MeasurementId || "")) {
-      window.dataLayer = window.dataLayer || [];
-      window.gtag = function () { dataLayer.push(arguments); };
-      gtag("js", new Date()); gtag("config", C.ga4MeasurementId, { page_variant: variant || "trio" });
-      var s = document.createElement("script"); s.async = true; s.src = "https://www.googletagmanager.com/gtag/js?id=" + C.ga4MeasurementId; document.head.appendChild(s);
-    }
-    if (/^\d{5,20}$/.test(C.metaPixelId || "")) {
-      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-      fbq("init", C.metaPixelId); fbq("track", "PageView");
-    }
+  function choice() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  var gaOn = /^G-[A-Z0-9]+$/.test(C.ga4MeasurementId || "");
+  var pixelOn = /^\d{5,20}$/.test(C.metaPixelId || "");
+  function loadGA() {
+    if (window.__ravenGA || !gaOn || choice() === "rejected") return; window.__ravenGA = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "granted" });
+    gtag("js", new Date());
+    gtag("config", C.ga4MeasurementId, { page_variant: variant || "trio", allow_google_signals: false, allow_ad_personalization_signals: false });
+    var s = document.createElement("script"); s.async = true; s.src = "https://www.googletagmanager.com/gtag/js?id=" + C.ga4MeasurementId; document.head.appendChild(s);
+  }
+  function loadPixel() {
+    if (window.__ravenPixel || !pixelOn || choice() !== "accepted") return; window.__ravenPixel = true;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq("init", C.metaPixelId); fbq("track", "PageView");
   }
   function track(name, data) {
-    if (consent() !== "accepted") return;
+    if (choice() === "rejected") return;
     data = Object.assign({ page_variant: variant || "trio", device_group: isMac ? "mac" : "mobile" }, data || {});
     if (window.gtag) gtag("event", name, data);
     if (window.fbq) {
@@ -429,10 +437,21 @@ window.RAVEN_CONFIG = {
       else if (name === "view_apps_section") fbq("track", "ViewContent", data);
     }
   }
+  loadGA(); loadPixel();
   var banner = document.getElementById("consent");
-  if (consent() === "accepted") loadMetrics(); else if (!consent()) banner.style.display = "block";
-  document.getElementById("consent-yes").onclick = function () { try { localStorage.setItem(KEY, "accepted"); } catch (e) {} banner.style.display = "none"; loadMetrics(); };
-  document.getElementById("consent-no").onclick = function () { try { localStorage.setItem(KEY, "rejected"); } catch (e) {} banner.style.display = "none"; };
+  // O aviso só existe se o Meta Pixel estiver configurado e a pessoa ainda não tiver escolhido
+  if (pixelOn && !choice()) banner.style.display = "block";
+  document.getElementById("consent-yes").onclick = function () { try { localStorage.setItem(KEY, "accepted"); } catch (e) {} banner.style.display = "none"; loadPixel(); };
+  document.getElementById("consent-no").onclick = function () { try { localStorage.setItem(KEY, "ads_rejected"); } catch (e) {} banner.style.display = "none"; };
+  var optout = document.getElementById("optout");
+  function showOpt() { if (choice() === "rejected") { document.getElementById("privacy-note").textContent = "Você optou por não ser medido nesta página."; } }
+  showOpt();
+  optout.onclick = function () {
+    try { localStorage.setItem(KEY, "rejected"); } catch (e) {}
+    if (gaOn) window["ga-disable-" + C.ga4MeasurementId] = true;
+    banner.style.display = "none"; showOpt();
+  };
+  if (choice() === "rejected" && gaOn) window["ga-disable-" + C.ga4MeasurementId] = true;
 
   /* ---- Enviar para o Mac: compartilhar > copiar > e-mail para si mesmo ---- */
   var TARGET = {
