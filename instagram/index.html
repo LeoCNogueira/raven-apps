@@ -241,7 +241,7 @@ footer a { color: var(--text); }
             <li>Backup conferido no segundo disco ou NAS.</li>
             <li>Separa voos, corrige a hora do drone e abre no Lightroom.</li>
           </ul>
-          <p class="price"><b>Grátis</b>. Pro por R$ 99,90, compra única. Requer macOS 15.</p>
+          <p class="price"><b>Grátis</b>. Pro por R$ 149,90, compra única. Requer macOS 15.</p>
           <a class="store-badge only-mac" href="https://apps.apple.com/app/flightframe-studio/id6822035026" data-app="flightframe" data-cta="app_store"><img src="/mac-app-store-badge.svg" alt="Baixar o FlightFrame Studio na Mac App Store" height="52" loading="lazy"></a>
           <button class="btn btn-primary only-mobile js-send" type="button" data-share="flightframe">Enviar o FlightFrame para o Mac</button>
         </article>
@@ -267,8 +267,9 @@ footer a { color: var(--text); }
             <li>Diz quando um disco pode ser apagado com segurança.</li>
             <li>Só lê: nunca altera, move ou apaga nada.</li>
           </ul>
-          <p class="price"><b>Em beta.</b> Entre na lista para ser avisado no lançamento.</p>
-          <a class="btn btn-outline" href="#receber" data-app="photo_backup_guardian" data-cta="waitlist">Quero ser avisado</a>
+          <p class="price"><b>Grátis para baixar</b>. Planos Pro e Studio dentro do app. Requer macOS 14.</p>
+          <a class="store-badge only-mac" href="https://apps.apple.com/app/id6824487886?mt=12" data-app="photo_backup_guardian" data-cta="app_store"><img src="/mac-app-store-badge.svg" alt="Baixar o Photo Backup Guardian na Mac App Store" height="52" loading="lazy"></a>
+          <button class="btn btn-primary only-mobile js-send" type="button" data-share="guardian">Enviar o Guardian para o Mac</button>
         </article>
 
       </div>
@@ -322,7 +323,7 @@ footer a { color: var(--text); }
     <div class="wrap final-grid">
       <div>
         <h2 id="links">Receba os links para abrir no Mac</h2>
-        <p class="lead">Um e-mail com os três apps, pronto para abrir no computador. Você também é avisado quando o Photo Backup Guardian for lançado.</p>
+        <p class="lead">Um e-mail com os três apps, pronto para abrir no computador, e as novidades importantes deles.</p>
       </div>
       <form id="form-lista" action="https://bricks4kidz.us12.list-manage.com/subscribe/post?u=a6c92d419f403bf0677f08e11&amp;id=b264ef6ccb&amp;f_id=002010e9f0" method="post" target="_blank">
         <label for="email">Seu e-mail</label>
@@ -379,7 +380,7 @@ window.RAVEN_CONFIG = {
   var V = {
     flightframe: { h1: "Solte o cartão. Saia com a prova.", sub: "O FlightFrame Studio copia, confere cada arquivo por SHA-256 e separa os voos. Grátis para começar." },
     acervo: { h1: "Anos de fotos. Zero bagunça.", sub: "O Acervo Organizer acha duplicatas pelo conteúdo e organiza HDs e NAS sem apagar nada." },
-    guardian: { h1: "Seu backup está mesmo completo?", sub: "O Photo Backup Guardian confere, arquivo por arquivo, se tudo tem cópia. Em beta: entre na lista." }
+    guardian: { h1: "Seu backup está mesmo completo?", sub: "O Photo Backup Guardian confere, arquivo por arquivo, se tudo tem cópia. Grátis para baixar." }
   };
   var variant = (params.get("app") || "").toLowerCase();
   if (V[variant]) {
@@ -388,13 +389,6 @@ window.RAVEN_CONFIG = {
     var list = document.getElementById("apps-list");
     var card = list.querySelector('[data-key="' + variant + '"]');
     if (card) { card.classList.add("featured"); list.insertBefore(card, list.firstChild); }
-    if (variant === "guardian") {
-      // Guardian ainda não está na loja: o objetivo é a lista
-      document.querySelectorAll('[data-share="page"]').forEach(function (b) {
-        var a = document.createElement("a"); a.className = b.className.replace("js-send", ""); a.href = "#receber"; a.textContent = "Quero ser avisado do lançamento";
-        a.setAttribute("data-track", "email_anchor"); b.replaceWith(a);
-      });
-    }
   }
   var campaign = params.get("utm_campaign") || "instagram";
 
@@ -457,7 +451,8 @@ window.RAVEN_CONFIG = {
   var TARGET = {
     page: location.origin + "/instagram/?utm_source=instagram&utm_medium=send_to_mac&utm_campaign=" + encodeURIComponent(campaign) + (variant ? "&app=" + variant : ""),
     flightframe: "https://apps.apple.com/app/flightframe-studio/id6822035026",
-    acervo: "https://apps.apple.com/app/id6821982992?mt=12"
+    acervo: "https://apps.apple.com/app/id6821982992?mt=12",
+    guardian: "https://apps.apple.com/app/id6824487886?mt=12"
   };
   var toast = document.getElementById("toast"), tt;
   function say(t) { toast.textContent = t; toast.classList.add("show"); clearTimeout(tt); tt = setTimeout(function () { toast.classList.remove("show"); }, 4200); }
